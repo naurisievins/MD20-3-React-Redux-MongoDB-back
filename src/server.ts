@@ -51,17 +51,17 @@ app.post("/animals", (req: Request, res: Response) => {
 
 // Delete task
 
-// app.delete("/tasks/:id", (req, res) => {
-//   const id = req.params.id;
+app.delete("/animals/:id", (req, res) => {
+  const id = req.params.id;
 
-//   Todo.findByIdAndDelete(id, (err) => {
-//     if (err) {
-//       console.log(err);
-//       return res.status(500).send("Error deleting task!");
-//     }
-//     res.send(`Task with ID ${id} deleted successfully`);
-//   });
-// });
+  Animal.findByIdAndDelete(id, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Error deleting task!");
+    }
+    res.send(`Task with ID ${id} deleted successfully`);
+  });
+});
 
 app.listen(3004, () => {
   console.log("Application started on port 3004!");
