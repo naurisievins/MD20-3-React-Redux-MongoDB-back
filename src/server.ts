@@ -18,21 +18,11 @@ app.use(bodyparser.json());
 app.use(cors({ origin: "*" }));
 
 // Get all animals
-
 app.get("/animals", (req: Request, res: Response) => {
   Animal.find().then((data) => res.send(data));
 });
 
-// const animalObject2 = new Animal({
-//   name: "Tiger2",
-//   imgLink:
-//     "https://upload.wikimedia.org/wikipedia/commons/3/3f/Walking_tiger_female.jpg",
-//   species: "Cat",
-// });
-// animalObject2.save();
-
 // Get animals by species
-
 app.get("/species/:id", (req: Request, res: Response) => {
   let id = req.params.id;
   id = id.charAt(0).toUpperCase() + id.slice(1);
@@ -40,10 +30,7 @@ app.get("/species/:id", (req: Request, res: Response) => {
 });
 
 // Add new animal
-
 app.post("/animals", (req: Request, res: Response) => {
-  //console.log(req.body.name);
-
   let name = req.body.name;
   name = validateNameAndSpecies(name);
 
